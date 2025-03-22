@@ -1,4 +1,4 @@
-; read password from user and check validation
+; read password from user and check validation in clear screen
 
 .model small
 .stack 100h
@@ -16,6 +16,14 @@ main proc
     ; Initialize data segment
                  mov  ax, @data
                  mov  ds, ax
+
+    ; clear screen
+                 mov  ax, 0600h           ; AH = 06 (scroll up), AL = 00 (attribute: normal text)
+                 mov  bh, 02h             ; color
+                 mov  cx, 0000h           ; Start of screen (top-left corner)
+                 mov  dx, 184fh           ; End of screen (bottom-right corner)
+                 int  10h                 ; Call BIOS interrupt 10h to clear screen
+
 
     ; Display the prompt
                  mov  ah, 09h
