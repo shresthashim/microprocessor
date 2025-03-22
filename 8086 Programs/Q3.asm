@@ -1,3 +1,5 @@
+; Convert the inputted-character from lowercase to uppercase.
+
 .model small
 .stack 100h
 

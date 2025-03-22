@@ -1,3 +1,5 @@
+; Check whether inputted character is a vowel or a consonant.
+
 .model small
 .stack 100h
 .data
