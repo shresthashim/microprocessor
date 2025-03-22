@@ -1,0 +1,6 @@
+Various Programs in 8086
+Simple Programs for Arithmetic, Logical, String Input/Output
+Conditions and Loops
+Array and String Processing
+Read and Display ASCII and Decimal Numbers
+Displaying Numbers in Binary and Hexadecimal Formats
