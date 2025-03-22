@@ -1,3 +1,4 @@
+; Find smallest from list of 5 elements
 
 .model small
 .stack 100h
