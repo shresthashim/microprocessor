@@ -1,3 +1,5 @@
+; Count the total number of vowels in a string
+
 .model small
 .stack 100h
 
