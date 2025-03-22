@@ -1,4 +1,4 @@
-; read password from user and check validation in clear screen
+; read password from user and check validation in clear screen (similar as Q8.asm)
 
 .model small
 .stack 100h
