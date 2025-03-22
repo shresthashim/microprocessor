@@ -1,3 +1,5 @@
+; String in Reverse Order
+
 .model small
 .stack 100h
 
