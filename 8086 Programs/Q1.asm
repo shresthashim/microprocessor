@@ -17,11 +17,11 @@ main proc far
 
     ; Print a New Line (CR + LF) for proper formatting
     mov dl, 13       ; Carriage Return (CR) - Moves cursor to the start of the line
-    mov ah, 2        ; DOS function 02h - Print character
+    mov ah, 02h        ; DOS function 02h - Print character
     int 21h          ; Call DOS interrupt
 
     mov dl, 10       ; Line Feed (LF) - Moves cursor down to the next line
-    mov ah, 2        ; DOS function 02h - Print character
+    mov ah, 02h        ; DOS function 02h - Print character
     int 21h          ; Call DOS interrupt
 
     ; Print "WORLD" using DOS interrupt 09h
