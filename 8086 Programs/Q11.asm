@@ -30,6 +30,7 @@ main proc
               lea  si, inputStr + 2      ; Pointer to input string
               mov  bl, 0                 ; Initialize vowel count to 0
 
+              
     check:    
               mov  al, [si]              ; Load character
               cmp  al, 'a'
@@ -80,3 +81,4 @@ main proc
 
 main endp
 end main
+
