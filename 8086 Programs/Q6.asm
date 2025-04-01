@@ -1,3 +1,5 @@
+; Sort the elements in ascending order
+
 .model small
 .stack 100h
 
