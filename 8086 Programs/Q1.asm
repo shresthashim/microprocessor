@@ -1,3 +1,5 @@
+; Introduction (Format) of 8086 Program
+
 .model small           ; Use the small memory model (for programs < 64KB)
 .stack 100h           ; Allocate 256 bytes for the stack
 .data
