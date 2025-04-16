@@ -1,33 +1,29 @@
-; QSN: Find the largest and smallest byte from 20 bytes stored at C000H.
-; Store the largest byte at C020H and the smallest byte at C021H.
+; QSN: Find the largest and smallest byte from 20 bytes stored at C050H.
+; Store the largest byte at C070H and the smallest byte at C071H.
 
-LXI H, C000H   ; Load HL with the starting address of the data
-MVI C, 14H     ; Load counter with 20 (decimal = 14H)
-MOV A, M       ; Load first byte into accumulator
-MOV D, A       ; Assume this is the largest number initially
-MOV E, A       ; Assume this is the smallest number initially
-INX H          ; Move to the next memory location
-DCR C          ; Decrement counter as we already read first byte
+LXI H, C050H      ; HL points to start of 20 bytes
+MVI C, 14H        ; Load counter = 20
+MOV A, M          ; Load first byte
+MOV D, A          ; Initialize D with first byte (max)
+MOV E, A          ; Initialize E with first byte (min)
+DCR C             ; Already processed one byte
+INX H             ; Move to next byte
 
-LOOP: MOV A, M   ; Load the current byte into accumulator
+NEXT: MOV A, M    ; Load byte from memory
+CMP D             ; Compare with current max
+JC LOOP1          ; If A < D, skip max update
+MOV D, A          ; Update max
 
-      CMP D      ; Compare with the current largest number
-      JNC SKIP1  ; If A ≤ D, skip updating largest
-      MOV D, A   ; Update largest number
+LOOP1: CMP E      ; Compare with current min
+JNC LOOP2         ; If A >= E, skip min update
+MOV E, A          ; Update min
 
-SKIP1: CMP E     ; Compare with the current smallest number
-      JC SKIP2   ; If A < E, update smallest
-      MOV E, A   ; Update smallest number
+LOOP2: INX H      ; Move to next byte
+DCR C             ; Decrement count
+JNZ NEXT          ; Loop until 20 bytes are done
 
-SKIP2: INX H     ; Move to the next memory location
-      DCR C      ; Decrement counter
-      JNZ LOOP   ; Repeat for all 20 bytes
-
-; Store the results
-MOV A, D        ; Load largest number
-STA C020H       ; Store it at C020H
-
-MOV A, E        ; Load smallest number
-STA C021H       ; Store it at C021H
-
-HLT             ; Halt execution
+MOV A, D
+STA C070H         ; Store max at C070H
+MOV A, E
+STA C071H         ; Store min at C071H
+HLT               ; Halt
